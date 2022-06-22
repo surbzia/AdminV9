@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-4">
-                        <div class="card">
+                        <div class="card p-5" style="    border: 1px solid #b7b7b7;">
 
                             <img src="{{ asset('templete/vendors/images/deskapp-logo.svg') }}" height="46px"
                                 alt="" class="dark-logo">
@@ -80,7 +80,7 @@
 
                                     <div class="row mb-0">
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary px-xxl-5 col-md-12">
+                                            <button type="submit" class="btn btn-primary px-xxl-5 col-md-12 rounded-pill">
                                                 {{ __('Login') }}
                                             </button>
 
