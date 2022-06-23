@@ -2,6 +2,8 @@
 Version: 3.0.0
 Author: Ankit Hingarajiya - DeskApp
 */
+
+
 @charset "utf-8";
 body,
 html {
@@ -631,7 +633,7 @@ p {
     color: #131e22;
     font-weight: 400;
     height: 45px;
-    border-color: #d4d4d4;
+       border-color: #b5afaf;
     letter-spacing: 0.035em;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -664,7 +666,7 @@ textarea.form-control {
 .custom-select:focus,
 .form-control:focus {
     color: #131e22;
-    border-color: #1b00ff;
+    border-color: #036c76;
     -webkit-box-shadow: 0 0 28px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 28px rgba(0, 0, 0, 0.1);
 }
@@ -858,7 +860,7 @@ textarea.form-control {
     top: 2px;
     left: -30px;
     background-color: transparent;
-    border: 2px solid #1b00ff;
+    border: 2px solid #05837d;
 }
 .custom-control-label::after {
     width: 20px;
@@ -873,7 +875,7 @@ textarea.form-control {
     background-color: none;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #1b00ff;
+    background-color: #05837d;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
     background-image: url(../images/check-mark.png);
@@ -4153,4 +4155,9 @@ body.IE .register-page-wrap .container {
     .register-page-wrap .wizard-content .wizard .steps {
         display: none;
     }
+}
+
+.card-border{
+    border: 1px solid #ababab;
+    padding: 21px 17px 0px 21px;
 }
