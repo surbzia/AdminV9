@@ -13,12 +13,12 @@
              <ul id="accordion-menu">
                  <li class="dropdown">
                      <a href="javascript:;" class="dropdown-toggle">
-                         <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                         <span class="micon dw dw-house-1"></span><span class="mtext">User Management</span>
                      </a>
                      <ul class="submenu">
-                         <li><a href="index.html">Dashboard style 1</a></li>
-                         <li><a href="index2.html">Dashboard style 2</a></li>
-                         <li><a href="index3.html">Dashboard style 3</a></li>
+                         <li><a href="{{route('permission.index')}}">Permission</a></li>
+                         <li><a href="{{route('role.index')}}">Role</a></li>
+                         <li><a href="{{route('user.index')}}">User</a></li>
                      </ul>
                  </li>
 

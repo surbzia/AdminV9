@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\{PermissionController, RoleController, UserController};
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,10 @@ Route::middleware([AuthenticateAdmin::class])->group(
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
         })->name('dashboard');
+
+        Route::resource('permission', PermissionController::class);
+        Route::resource('role', RoleController::class);
+        Route::resource('user', UserController::class);
     }
 );
 

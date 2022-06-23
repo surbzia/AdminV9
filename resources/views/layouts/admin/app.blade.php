@@ -7,23 +7,25 @@
     <title> | ADMIN</title>
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('vendors/images/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('templete/vendors/images/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('templete/vendors/images/favicon-16x16.png')}}">
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"></link>
     <link rel="stylesheet" type="text/css" href="{{ asset('templete/vendors/styles/core.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete/vendors/styles/icon-font.min.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('templete/src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
+        href="{{ asset('templete/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('templete/src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
+        href="{{ asset('templete/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete/vendors/styles/style.css') }}">
 </head>
 
@@ -50,19 +52,31 @@
                 {{ session('status') }}
             </div>
         @endif
-        @yield('content')
+       <div class="mb-15 ml-0 mt-15">
+         @yield('content')
+       </div>
     </div>
+      @yield('script')
+    <script>
+         $(document).ready(function () {
+            $('#permission').DataTable();
+        });
+    </script>
     <!-- js -->
     <script src="{{ asset('templete/vendors/scripts/core.js') }}"></script>
     <script src="{{ asset('templete/vendors/scripts/script.min.js') }}"></script>
     <script src="{{ asset('templete/vendors/scripts/process.js') }}"></script>
     <script src="{{ asset('templete/vendors/scripts/layout-settings.js') }}"></script>
-    <script src="{{ asset('templete/src/plugins/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('templete/src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('templete/src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('templete/src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('templete/src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('templete/plugins/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('templete/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('templete/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('templete/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('templete/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('templete/vendors/scripts/dashboard.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+
+
 </body>
 
 </html>
