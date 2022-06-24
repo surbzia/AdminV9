@@ -36,11 +36,8 @@
                             <div class="col-md-6 col-sm-12 add_module d-none">
                                 <div class="form-group">
                                     <label>Add New Module</label>
-<<<<<<< HEAD
                                     <input type="text" class="form-control" name="new_module" id="new_module"
-=======
-                                    <input type="text" class="form-control" name="new_module" id="module"
->>>>>>> 5fdd961e9d25e34c1f353a46323c13b943406251
+
                                         placeholder="Module">
                                 </div>
                             </div>
@@ -82,7 +79,7 @@
 
         function generateSlug(event) {
             let str = event.target.value;
-<<<<<<< HEAD
+
            let module = $('#module').val();
            let new_module = $('#new_module').val();
             if(module != 1 || new_module != ''){
@@ -97,13 +94,6 @@
             }else{
                 alert('Select or Add Moduel first..');
             }
-=======
-            str = str.replace(/[^a-zA-Z0-9\s]/g, "");
-            // $('#name').val(str);
-            str = str.toLowerCase();
-            str = str.replace(/\s/g, '-');
-            $('#slug').val(str);
->>>>>>> 5fdd961e9d25e34c1f353a46323c13b943406251
-        }
+
     </script>
 @endsection

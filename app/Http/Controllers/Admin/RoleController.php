@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use Spatie\Permission\Models\Permission;
-=======
->>>>>>> 5fdd961e9d25e34c1f353a46323c13b943406251
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -30,8 +27,6 @@ class RoleController extends Controller
      */
     public function create()
     {
-
-
         $permissions = Role::distinct()->get('module');
         $obj = new Role();
         $data = [
@@ -64,7 +59,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
+
     public function show(Role $role)
     {
         $permissions = Permission::all()->groupBy('module');
@@ -74,12 +69,7 @@ class RoleController extends Controller
           'permissions' =>   $permissions,
         ];
         return view('admin.roles.permissions')->with($data);
-=======
-    public function show($id)
-    {
-        //
->>>>>>> 5fdd961e9d25e34c1f353a46323c13b943406251
-    }
+}
 
     /**
      * Show the form for editing the specified resource.

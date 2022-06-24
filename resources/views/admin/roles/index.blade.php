@@ -28,11 +28,9 @@
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         <a class="btn btn-outline-success btn-sm rounded-pill"
-<<<<<<< HEAD
+
                                             href="{{ route('role.show', $role->id) }}">Permissions</a>
-=======
-                                            href="{{ route('role.edit', $role->id) }}">Permissions</a>
->>>>>>> 5fdd961e9d25e34c1f353a46323c13b943406251
+
                                     </td>
                                     <td class="d-flex">
                                         <a class="btn btn-outline-dark btn-sm rounded-pill"
