@@ -1592,7 +1592,7 @@ table.dataTable.dtr-inline.collapsed
 }
 .sidebar-menu .dropdown-toggle {
     display: block;
-    padding: 18px 15px 18px 67px;
+    padding: 10px 15px 10px 67px;
     font-size: 13px;
     color: #fff;
     font-weight: 300;
@@ -1718,7 +1718,7 @@ table.dataTable.dtr-inline.collapsed
 }
 .sidebar-menu .submenu li a {
     display: block;
-    padding: 18px 15px 18px 60px;
+    padding: 10px 15px 10px 60px;
     font-size: 14px;
     color: #fff;
     font-weight: 300;

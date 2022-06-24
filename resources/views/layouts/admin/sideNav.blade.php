@@ -11,14 +11,20 @@
      <div class="menu-block customscroll">
          <div class="sidebar-menu">
              <ul id="accordion-menu">
+
+                <li>
+                     <a href="{{route('dashboard')}}"   class="dropdown-toggle no-arrow {{activeNav('dashboard')}}">
+                         <span class="micon dw dw-calendar1"></span><span class="mtext">Dashboard</span>
+                     </a>
+                 </li>
                  <li class="dropdown">
                      <a href="javascript:;" class="dropdown-toggle">
                          <span class="micon dw dw-house-1"></span><span class="mtext">User Management</span>
                      </a>
                      <ul class="submenu">
-                         <li><a href="{{route('permission.index')}}">Permission</a></li>
-                         <li><a href="{{route('role.index')}}">Role</a></li>
-                         <li><a href="{{route('user.index')}}">User</a></li>
+                         <li><a href="{{route('permission.index')}}" class="{{activeNav('permission.index')}}">Permission</a></li>
+                         <li><a href="{{route('role.index')}}" class="{{activeNav('role.index')}}">Role</a></li>
+                         <li><a href="{{route('user.index')}}" class="{{activeNav('user.index')}}">User</a></li>
                      </ul>
                  </li>
 
@@ -26,15 +32,6 @@
                      <a href="calendar.html" class="dropdown-toggle no-arrow">
                          <span class="micon dw dw-calendar1"></span><span class="mtext">Calendar</span>
                      </a>
-                 </li>
-                 <li class="dropdown">
-                     <a href="javascript:;" class="dropdown-toggle">
-                         <span class="micon dw dw-apartment"></span><span class="mtext"> UI Elements </span>
-                     </a>
-                     <ul class="submenu">
-                         <li><a href="ui-buttons.html">Buttons</a></li>
-                         <li><a href="ui-cards.html">Cards</a></li>
-                     </ul>
                  </li>
              </ul>
          </div>
