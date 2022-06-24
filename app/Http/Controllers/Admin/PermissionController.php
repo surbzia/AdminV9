@@ -27,13 +27,22 @@ class PermissionController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5fdd961e9d25e34c1f353a46323c13b943406251
         $permissions = Permission::distinct()->get('module');
         $obj = new Permission();
         $data = [
             'is_edit' => false,
             'title' => 'Add Permission',
             'button' => 'Submit',
+<<<<<<< HEAD
             'route' => route('permission.store'),
+=======
+            'route' => route('permission.create'),
+>>>>>>> 5fdd961e9d25e34c1f353a46323c13b943406251
             'permissions' => $permissions,
             'edit_permission' => $obj,
         ];
