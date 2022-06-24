@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -98,6 +99,18 @@ class UserController extends Controller
         $user->update($request->all());
         $user->assignRole($request->role);
         return redirect()->route('user.index')->with('status', 'User has been updated successfully');
+    }
+
+    public function update_profile(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if (!is_null($request->password)) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->update();
+        return redirect()->back()->with('status', 'Profile has been updated successfully');
     }
 
     /**

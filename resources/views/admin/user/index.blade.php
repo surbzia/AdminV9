@@ -23,11 +23,14 @@
                         <tbody>
 
                             @foreach ($users as $key => $user)
+                            @php
+                                $role = count($user->getRoleNames()) > 0? $user->getRoleNames()[0] : 'Not Assigned';
+                            @endphp
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->getRoleNames()[0]}}</td>
+                                    <td>{{ $role}}</td>
                                     <td class="d-flex">
                                         <a class="btn btn-outline-dark btn-sm rounded-pill"
                                             href="{{ route('user.edit', $user->id) }}">Edit</a>
