@@ -39,8 +39,8 @@
                                         id="role" id="">
                                         <option value="" selected>Select Role</option>
                                         @foreach ($roles as $role)
-                                            <option {{ $edit_user->roles->pluck('id') == $permission->id ? 'Selected' : '' }}
-                                                value="{{ $role->id }}">{{ $role->name }}</option>
+                                            <option {{ $is_edit && count($edit_user->roles) > 0 && $edit_user->roles->pluck('id') == $role->id ? 'Selected' : '' }}
+                                                value="{{ $role->name }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

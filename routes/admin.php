@@ -45,6 +45,7 @@ Route::middleware([AuthenticateAdmin::class])->group(
         Route::resource('permission', PermissionController::class);
         Route::resource('role', RoleController::class);
         Route::post('role/update_permissions', [RoleController::class, 'update_permissions'])->name('role.update_permissions');
+        Route::post('role/update_role', [RoleController::class, 'update_role'])->name('role.update_role');
         Route::resource('user', UserController::class);
     }
 );

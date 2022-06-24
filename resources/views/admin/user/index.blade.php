@@ -27,7 +27,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->getRoleNames()}}</td>
+                                    <td>{{ $user->getRoleNames()[0]}}</td>
                                     <td class="d-flex">
                                         <a class="btn btn-outline-dark btn-sm rounded-pill"
                                             href="{{ route('user.edit', $user->id) }}">Edit</a>

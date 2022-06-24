@@ -104,15 +104,21 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $permission)
+    public function update(Request $request)
     {
-        $request = $request->all();
+        dd($request);
+        // $request = $request->all();
 
-        if (isset($request['new_module'])) {
-            $request['module'] = $request['new_module'];
-        }
-        $permission->update($request);
-        return redirect()->route('permission.index')->with('status', 'Permission has been updated successfully');
+        // if (isset($request['new_module'])) {
+        //     $request['module'] = $request['new_module'];
+        // }
+        // $permission->update($request);
+        // return redirect()->route('permission.index')->with('status', 'Permission has been updated successfully');
+    }
+    public function update_role(Request $request)
+    {
+        Role::find($request->id)->update(['name' => $request->name]);
+        return redirect()->route('role.index')->with('status', 'Role has been updated successfully');
     }
 
     /**
@@ -121,9 +127,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $permission)
+    public function destroy(Role $role)
     {
-        $permission->delete();
-        return redirect()->route('permission.index')->with('status', 'Permission has been deleted successfully');
+        $role->delete();
+        return redirect()->route('role.index')->with('status', 'Role has been deleted successfully');
     }
 }

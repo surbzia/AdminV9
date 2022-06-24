@@ -69,27 +69,6 @@
             });
         });
 
-        function updatePermissions() {
-            let checked = $('.permissions:checkbox:checked');
-            let role_id = $('#role_id').val();
 
-            let permissions = [];
-            checked.each(function() {
-                permissions.push($(this).data('id'));
-            });
-
-            $.ajax({
-                type: "POST",
-                url: '/update_permissions/' + role_id,
-                data: {
-                    permissions: permissions
-                },
-                success: function(response) {
-
-                }
-            });
-
-
-        }
     </script>
 @endsection

@@ -95,13 +95,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request = $request->all();
-
-        if (isset($request['new_module'])) {
-            $request['module'] = $request['new_module'];
-        }
-        $user->update($request);
-        return redirect()->route('permission.index')->with('status', 'Permission has been updated successfully');
+        $user->update($request->all());
+        $user->assignRole($request->role);
+        return redirect()->route('user.index')->with('status', 'User has been updated successfully');
     }
 
     /**

@@ -4,13 +4,14 @@
     <div class="row">
         <div class="col-md-12 mb-15 pb-15 pr-5 text-right">
             <h5 class="float-left">Roles</h5>
-            <button class="btn btn-info btn-sm rounded-pill" data-toggle="modal" data-target="#RoleAddModel" type="button">Add Role</button>
+            <button class="btn btn-info btn-sm rounded-pill" data-toggle="modal" data-target="#RoleAddModel" type="button">Add
+                Role</button>
 
         </div>
         <hr>
         <div class="col-md-12">
             <div class="card-box mb-30 card-border" style="margin-right: 64px;">
-                <div class="pb-20" >
+                <div class="pb-20">
                     <table id="permission" class="row-border" style="width:80%:">
                         <thead>
                             <tr>
@@ -28,13 +29,12 @@
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         <a class="btn btn-outline-success btn-sm rounded-pill"
-
                                             href="{{ route('role.show', $role->id) }}">Permissions</a>
 
                                     </td>
                                     <td class="d-flex">
-                                        <a class="btn btn-outline-dark btn-sm rounded-pill"
-                                            href="{{ route('role.edit', $role->id) }}">Edit</a>
+                                        <a class="btn btn-outline-dark btn-sm rounded-pill" onclick="editRole({{$role}})" href="javascript:;"
+                                            data-role="{{ $role }}">Edit</a>
 
                                         <form method="post" action="{{ route('role.destroy', $role->id) }}">
                                             @method('delete')
@@ -51,8 +51,16 @@
             </div>
         </div>
     </div>
-        @include('admin.roles.model')
+    @include('admin.roles.model')
 @endsection
 @section('script')
-    <script></script>
+    <script>
+        function editRole(role){
+            $('.edit_name').val(role.name);
+            $('#role_id').val(role.id);
+            let route = `{{ route('role.update_role') }}`;
+            $('#edit_role_form').attr('action', route);
+            $('#RoleEditModel').modal('show');
+        }
+    </script>
 @endsection
