@@ -80,12 +80,13 @@
             let str = event.target.value;
            let module = $('#module').val();
            let new_module = $('#new_module').val();
-            if(module != '' || new_module != ''){
+            if(module != 1 || new_module != ''){
                 str = str.replace(/[^a-zA-Z0-9\s]/g, "");
                 // $('#name').val(str);
                 str = str.toLowerCase();
                 str = str.replace(/\s/g, '-');
-                let module_value = (module != '')? module : new_module;
+
+                let module_value = (module != 1)? module : new_module;
                 let slug = str+'-'+module_value;
                 $('#slug').val(slug.toLowerCase());
             }else{
