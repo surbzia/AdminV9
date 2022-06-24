@@ -64,12 +64,18 @@ class RoleController extends Controller
     {
         $permissions = Permission::all()->groupBy('module');
         $data=[
-          'role_name' =>   $role->name,
+            'role' =>   $role,
           'role_permissions' =>   $role->permissions->pluck('id'),
           'permissions' =>   $permissions,
         ];
         return view('admin.roles.permissions')->with($data);
 }
+    public function update_permissions(Request $request)
+    {
+        $role = Role::find($request->role_id);
+        $role->syncPermissions($request->role_permissions);
+        return redirect()->route('role.index')->with('status', 'Permissions has been updated');
+    }
 
     /**
      * Show the form for editing the specified resource.

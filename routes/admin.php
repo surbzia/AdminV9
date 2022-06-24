@@ -6,6 +6,7 @@ use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AuthenticateAdmin;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,17 @@ use App\Http\Middleware\AuthenticateAdmin;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/clear', function () {
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('route:cache');
+    Artisan::call('view:clear');
+    return redirect()->back();
+});
+
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -32,6 +44,7 @@ Route::middleware([AuthenticateAdmin::class])->group(
 
         Route::resource('permission', PermissionController::class);
         Route::resource('role', RoleController::class);
+        Route::post('role/update_permissions', [RoleController::class, 'update_permissions'])->name('role.update_permissions');
         Route::resource('user', UserController::class);
     }
 );
