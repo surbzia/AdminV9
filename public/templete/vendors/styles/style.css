@@ -4161,3 +4161,9 @@ body.IE .register-page-wrap .container {
     border: 1px solid #ababab;
     padding: 21px 17px 0px 21px;
 }
+
+
+.btn, .btn-sm {
+    padding: 1px 15px !important;
+    font-size: 14px;
+}

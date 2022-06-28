@@ -19,46 +19,71 @@
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label>User Name</label>
-                                    <input type="text" id="name" onkeyup="generateSlug(event)"
-                                        value="{{ old('name', $edit_user) }}" class="form-control" name="name"
+                                    <input type="text" id="name"
+                                        value="{{ old('name', $edit_user) }}"
+                                        class="form-control @error('name') is-invalid @enderror"" name="name"
                                         placeholder="User Name">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" id="email" class="form-control"
-                                        value="{{ old('email', $edit_user) }}" name="email"
-                                        placeholder="User Email">
+                                    <input type="text" id="email"
+                                        class="form-control @error('email') is-invalid @enderror""
+                                        value="{{ old('email', $edit_user) }}" name="email" placeholder="User Email">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <label>User Role</label>
-                                    <select onchange="enableAddModule(event)" class="form-control" name="role"
+                                    <select
+                                        class="form-control @error('role') is-invalid @enderror"" name="role"
                                         id="role" id="">
                                         <option value="" selected>Select Role</option>
                                         @foreach ($roles as $role)
-                                            <option {{ $is_edit && count($edit_user->roles) > 0 && $edit_user->roles->pluck('id') == $role->id ? 'Selected' : '' }}
+                                        @php
+                                            $selected = $is_edit && count($edit_user->roles) > 0 && $edit_user->roles->pluck('id')[0] == $role->id ? 'Selected' : '';
+                                        @endphp
+                                            <option
+                                                {{$selected }}
                                                 value="{{ $role->name }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('role')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="text" id="password" class="form-control"
-                                        value="" name="password"
-                                        placeholder="Password">
+                                    <input type="text" id="password"
+                                        class="form-control @error('password') is-invalid @enderror"" value=""
+                                        name="password" placeholder="Password">
                                 </div>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Confirm Password</label>
-                                    <input type="text" id="confirm_password" class="form-control"
-                                        value="" name="confirm_password"
-                                        placeholder="Confirm Password<">
+                                    <input type="text" id="confirm_password" class="form-control" value=""
+                                        name="confirm_password" placeholder="Confirm Password">
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">
@@ -74,22 +99,5 @@
 @endsection
 @section('script')
     <script>
-        function enableAddModule(event) {
-            let value = event.target.value;
-            if (value == 1) {
-                $('.add_module').removeClass('d-none');
-            } else {
-                $('.add_module').addClass('d-none');
-            }
-        }
-
-        function generateSlug(event) {
-            let str = event.target.value;
-            str = str.replace(/[^a-zA-Z0-9\s]/g, "");
-            // $('#name').val(str);
-            str = str.toLowerCase();
-            str = str.replace(/\s/g, '-');
-            $('#slug').val(str);
-        }
     </script>
 @endsection

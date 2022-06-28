@@ -106,11 +106,13 @@
             </div>
             <div class="user-info-dropdown">
                 <div class="dropdown">
-                    <a class="dropdown-toggle mt-xl-1" href="#" role="button" data-toggle="dropdown">
+                    <a class="dropdown-toggle mt-xl-1" href="#" role="button" data-toggle="dropdown" style="padding-top: 15px;">
                         {{-- <span class="user-icon">
                             <img src="vendors/images/photo1.jpg" alt="">
                         </span> --}}
-                        <i class="icon-copy dw dw-user-12 font-30"></i>
+                         {{-- <i class="icon-copy dw dw-user-12 font-30"></i> --}}
+                       <span class="font-10" > {{explode(' ',trim(Auth::user()->name))[0]}}</span>
+
                         {{-- <span class="user-name">{{ Auth::user() ? Auth::user()->name : '' }}</span> --}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list shadow-lg">

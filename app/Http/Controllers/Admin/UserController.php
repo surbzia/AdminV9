@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -29,14 +30,13 @@ class UserController extends Controller
     public function create()
     {
 
-
         $roles = Role::all();
         $obj = new User();
         $data = [
             'is_edit' => false,
             'title' => 'Add User',
             'button' => 'Submit',
-            'route' => route('user.create'),
+            'route' => route('user.store'),
             'roles' => $roles,
             'edit_user' => $obj,
         ];
@@ -49,10 +49,12 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $request = $request->all();
-        User::create($request);
+        $user = User::create($request);
+
+        $user->syncRoles($request['role']);
         return redirect()->route('user.index')->with('status', 'User has been added successfully');
     }
 
@@ -94,10 +96,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         $user->update($request->all());
-        $user->assignRole($request->role);
+        $user->syncRoles($request->role);
         return redirect()->route('user.index')->with('status', 'User has been updated successfully');
     }
 
