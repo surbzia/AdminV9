@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\{PermissionController, RoleController, UserController};
+use App\Http\Controllers\Admin\{AuthorController, PermissionController, RoleController, UserController};
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +47,7 @@ Route::middleware([AuthenticateAdmin::class])->group(
         Route::post('role/update_permissions', [RoleController::class, 'update_permissions'])->name('role.update_permissions');
         Route::post('role/update_role', [RoleController::class, 'update_role'])->name('role.update_role');
         Route::resource('user', UserController::class);
+        Route::resource('author', AuthorController::class);
         Route::get('/profile', function () {
             return view('admin.user.profile');
         })->name('user.profile');

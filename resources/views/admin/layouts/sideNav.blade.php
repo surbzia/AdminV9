@@ -27,6 +27,14 @@
                          <li><a href="{{route('user.index')}}" class="{{activeNav('user.index')}}">User</a></li>
                      </ul>
                  </li>
+                 <li class="dropdown">
+                     <a href="javascript:;" class="dropdown-toggle">
+                         <span class="micon dw dw-auther-1"></span><span class="mtext">Book Management</span>
+                     </a>
+                     <ul class="submenu">
+                         <li><a href="{{route('author.index')}}" class="{{activeNav('author.index')}}">Author</a></li>
+                     </ul>
+                 </li>
 
                  <li>
                      <a href="calendar.html" class="dropdown-toggle no-arrow">
