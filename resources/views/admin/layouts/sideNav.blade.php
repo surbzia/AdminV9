@@ -19,7 +19,8 @@
                  </li>
                  <li class="dropdown">
                      <a href="javascript:;" class="dropdown-toggle">
-                         <span class="micon dw dw-house-1"></span><span class="mtext">User Management</span>
+                         <span class="micon dw dw-user-2"></span>
+                         <span class="mtext">User Management</span>
                      </a>
                      <ul class="submenu">
                          <li><a href="{{route('permission.index')}}" class="{{activeNav('permission.index')}}">Permission</a></li>
@@ -29,7 +30,7 @@
                  </li>
                  <li class="dropdown">
                      <a href="javascript:;" class="dropdown-toggle">
-                         <span class="micon dw dw-auther-1"></span><span class="mtext">Book Management</span>
+                        <span class="micon dw dw-open-book"></span><span class="mtext">Book Management</span>
                      </a>
                      <ul class="submenu">
                          <li><a href="{{route('author.index')}}" class="{{activeNav('author.index')}}">Author</a></li>

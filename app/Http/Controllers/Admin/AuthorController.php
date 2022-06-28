@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AuthorRequest;
 use App\Http\Requests\Admin\UserRequest;
+use App\Models\Admin\Author;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,8 +20,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.author.index')->with(compact('users'));
+        $authors = Author::all();
+        return view('admin.author.index')->with(compact('authors'));
     }
 
     /**
@@ -30,17 +32,15 @@ class AuthorController extends Controller
     public function create()
     {
 
-        $roles = Role::all();
-        $obj = new User();
+        $obj = new Author();
         $data = [
             'is_edit' => false,
-            'title' => 'Add User',
+            'title' => 'Add Author',
             'button' => 'Submit',
-            'route' => route('user.store'),
-            'roles' => $roles,
-            'edit_user' => $obj,
+            'route' => route('author.store'),
+            'edit_author' => $obj,
         ];
-        return view('admin.user.form')->with($data);
+        return view('admin.author.form')->with($data);
     }
 
     /**
@@ -49,13 +49,12 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(AuthorRequest $request)
     {
         $request = $request->all();
-        $user = User::create($request);
+        $user = Author::create($request);
 
-        $user->syncRoles($request['role']);
-        return redirect()->route('user.index')->with('status', 'User has been added successfully');
+        return redirect()->route('author.index')->with('status', 'Author has been created successfully');
     }
 
     /**
@@ -75,18 +74,16 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Author $author)
     {
-        $roles = Role::all();
         $data = [
             'is_edit' => true,
-            'title' => 'Update User',
+            'title' => 'Update Author',
             'button' => 'Update',
-            'route' => route('user.update', $user->id),
-            'roles' => $roles,
-            'edit_user' => $user,
+            'route' => route('author.update', $author->id),
+            'edit_author' => $author,
         ];
-        return view('admin.user.form')->with($data);
+        return view('admin.author.form')->with($data);
     }
 
     /**
@@ -96,23 +93,10 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(AuthorRequest $request, Author $author)
     {
-        $user->update($request->all());
-        $user->syncRoles($request->role);
-        return redirect()->route('user.index')->with('status', 'User has been updated successfully');
-    }
-
-    public function update_profile(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if (!is_null($request->password)) {
-            $user->password = Hash::make($request->password);
-        }
-        $user->update();
-        return redirect()->back()->with('status', 'Profile has been updated successfully');
+        $author->update($request->all());
+        return redirect()->route('author.index')->with('status', 'Author has been updated successfully');
     }
 
     /**
@@ -121,9 +105,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $permission)
+    public function destroy(Author $author)
     {
-        $permission->delete();
-        return redirect()->route('user.index')->with('status', 'Permission has been deleted successfully');
+        $author->delete();
+        return redirect()->route('author.index')->with('status', 'Author has been deleted successfully');
     }
 }

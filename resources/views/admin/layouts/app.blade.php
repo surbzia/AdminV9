@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templete/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('templete/vendors/styles/style.css') }}">
+
 </head>
 
 <body>
