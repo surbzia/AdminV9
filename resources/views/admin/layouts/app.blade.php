@@ -52,6 +52,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
        <div class="mb-15 ml-0 mt-15">
          @yield('content')
        </div>
@@ -60,6 +65,10 @@
     <script>
          $(document).ready(function () {
             $('#permission').DataTable();
+
+            $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+            $(".alert").slideUp(500);
+            });
         });
     </script>
     <!-- js -->
